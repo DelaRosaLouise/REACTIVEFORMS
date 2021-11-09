@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+     <center>Sign Up</center> 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-padding">
+    <form [formGroup]="registrationForm" (ngSubmit)="submit()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input autocapitalize inputmode="text" formControlName="name"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.name">
+          <ng-container *ngIf="name.hasError(error.type) && (name.dirty || name.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Phone</ion-label>
+          <ion-input inputmode="tel" formControlName="phone"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.phone">
+          <ng-container *ngIf="phone.hasError(error.type) && (phone.dirty || phone.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input inputmode="email" formControlName="email"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.email">
+          <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+      </ion-list>
+      <ion-list formGroupName="password">
+        <ion-list-header>
+          <ion-label>PASSWORD</ion-label>
+        </ion-list-header>
+        
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input formControlName="password"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.password">
+          <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Retype your Password</ion-label>
+          <ion-input formControlName="retype"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.retype">
+          <ng-container *ngIf="retype.hasError(error.type) && (retype.dirty || retype.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        
+      </ion-list>
+      <ion-button [disabled]="!registrationForm.valid" type="submit" expand="block">Submit <ion-icon slot="end"
+          name="create">
+        </ion-icon>
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

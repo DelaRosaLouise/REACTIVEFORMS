@@ -1,0 +1,7 @@
+{
+  "name": "Applyiing Reactive Forms",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
